@@ -143,9 +143,6 @@ for iter = 1:iterations
         % 计算新的SOC
         P_ev = squeeze(pop(i, :, :));
         SOC_new = SOC_init + cumsum(P_ev, 2);%得到所有EV各时刻的电池能量信息
-    
-        % **确保SOC不会超出上下界**
-        SOC_new = max(min(SOC_new, SOC_max), SOC_min);
 
         % **修正超出SOC范围的P_ev**
         for ev = 1:numEV
